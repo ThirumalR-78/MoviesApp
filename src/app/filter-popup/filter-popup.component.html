@@ -1,0 +1,117 @@
+<div mat-dialog-content>
+  <h1>Filter</h1>
+  <!-- <p>Popularity: {{ movie.popularity }}</p>
+  <p>Budget: {{ movie.budget }}</p>
+  <p>Revenue: {{ movie.revenue }}</p>
+  <p>Cast: {{ movie.cast }}</p>
+  <p>
+    Homepage: <a [href]="movie.homepage">{{ movie.homepage }}</a>
+  </p>
+  <p>Director: {{ movie.director }}</p>
+  <p>Summary: {{ movie.short_summary }}</p>
+  <p>Genres: {{ movie.genres }}</p>
+  <p>Production Companies: {{ movie.production_companies }}</p>
+  <p>Release Year: {{ movie.release_year }}</p> -->
+
+  <form (ngSubmit)="applyFilter()" #filterForm="ngForm">
+    <!-- <h2>Filter Options</h2> -->
+    <!-- <div>
+      <label for="popularity">Popularity</label>
+      <input
+        type="number"
+        id="popularity"
+        name="popularity"
+        [(ngModel)]="filterOptions.popularity"
+      />
+    </div>
+    <div>
+      <label for="budget">Budget</label>
+      <input
+        type="number"
+        id="budget"
+        name="budget"
+        [(ngModel)]="filterOptions.budget"
+      />
+    </div>
+    <div>
+      <label for="revenue">Revenue</label>
+      <input
+        type="number"
+        id="revenue"
+        name="revenue"
+        [(ngModel)]="filterOptions.revenue"
+      />
+    </div>
+    <div>
+      <label for="genres">Genres</label>
+      <input
+        type="text"
+        id="genres"
+        name="genres"
+        [(ngModel)]="filterOptions.genres"
+      />
+    </div> -->
+    <div class="col-12" style="width: 1400px">
+      <div>Select Genre</div>
+      <div>
+        <mat-form-field style="width: 1200px">
+          <mat-label>Genre</mat-label>
+          <mat-select
+            [(ngModel)]="selectedGeneres"
+            multiple
+            [ngModelOptions]="{ standalone: true }"
+          >
+            <mat-option *ngFor="let option of generes" [value]="option">{{
+              option
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div>Select Cast</div>
+      <div>
+        <mat-form-field style="width: 1200px">
+          <mat-label>Cast</mat-label>
+          <mat-select
+            [(ngModel)]="selectedCast"
+            multiple
+            [ngModelOptions]="{ standalone: true }"
+          >
+            <mat-option *ngFor="let option of cast" [value]="option">{{
+              option
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div>Select Crew</div>
+      <div>
+        <mat-form-field style="width: 1200px">
+          <mat-label>Crew</mat-label>
+          <mat-select
+            [(ngModel)]="selectedDirectors"
+            multiple
+            [ngModelOptions]="{ standalone: true }"
+          >
+            <mat-option *ngFor="let option of directors" [value]="option">{{
+              option
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div style="text-align-last: end">
+      <button
+        type="reset"
+        class="btn btn-transparent"
+        (click)="dialogRef.close(false)"
+      >
+        Cancel
+      </button>
+      <button type="submit" class="btn btn-primary" (click)="applyFilter()">
+        Apply Filter
+      </button>
+    </div>
+  </form>
+</div>

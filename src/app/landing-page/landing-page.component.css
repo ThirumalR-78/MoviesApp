@@ -1,0 +1,36 @@
+.header{
+    /* font-size: xx-large; */
+    /* font-weight: bolder; */
+    text-align: center;
+    margin-top: 25px;
+    /* color: rgb(199, 103, 103); */
+    font-style: oblique;
+    font-size: 28px;
+        font-weight: bold;
+        color: #333;
+        text-transform: uppercase;
+        width: 100%;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        letter-spacing: 2px;
+        line-height: 1.2;
+        /* Additional styles for beautification */
+        background-image: linear-gradient(to right, #ff4d00, #ff9e00);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        padding-bottom: 5px;
+        border-bottom: 2px solid #ff9e00;
+        display: inline-block;
+        margin-bottom: 10px;
+}
+
+.btn {
+    padding: 6px 20px;
+    border: 2px solid white;
+    background-color: brown;
+    color: white;
+    margin: 17px;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 400px;
+}

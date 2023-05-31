@@ -1,0 +1,100 @@
+<!-- <div class="test">
+  <carousel>
+    <slide>
+      <img
+        src="../../assets/images/movie-covers/fight-club.jpg"
+        alt="Image 1"
+      />
+    </slide>
+    <slide>
+      <img
+        src="../../assets/images/movie-covers/avengers-endgame.jpg"
+        alt="Image 2"
+      />
+    </slide>
+    <slide>
+      <img src="../../assets/images/movie-covers/deadpool.jpg" alt="Image 3" />
+    </slide>
+  </carousel>
+</div> -->
+<header class="fixed">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="logo">
+          <!-- <img src="../../assets/images/logo.png" alt="" /> -->
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTiG_bPHT8CoGTBBJSpugaBOL9x0Mz3HUxRw&usqp=CAU"
+            alt=""
+            style="margin-left: -100px; height: 100px; width: 200px"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <h1 class="header">
+    Your personal guide to movie paradise: browse, discover, and indulge!
+    <!-- Lights, camera, explore! Dive into the vast universe of movies with our
+    Website -->
+  </h1>
+  <div></div>
+  <div style="height: 500px; width: 1000px; margin: auto; margin-top: 50px">
+    <mdb-carousel [isControls]="true" [animation]="'fade'">
+      <mdb-carousel-item>
+        <img
+          src="https://i.ibb.co/LpSDPKb/aveng.jpg"
+          class="d-block w-100"
+          alt="..."
+          style="width: 1320px; height: 500px"
+        />
+        <!-- <img
+          src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).webp"
+          class="d-block w-100"
+          alt="..."
+        /> -->
+        <div class="carousel-caption d-none d-md-block">
+          <!-- <h5>First slide label</h5>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
+        </div>
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <img
+          src="../../assets/images/movie-covers/ava.jpg"
+          class="d-block w-100"
+          alt="..."
+          style="width: 1320px; height: 500px"
+        />
+        <!-- <img
+          src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).webp"
+          class="d-block w-100"
+          alt="..."
+        /> -->
+        <div class="carousel-caption d-none d-md-block">
+          <!-- <h5>Second slide label</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+        </div>
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <img
+          src="../../assets/images/movie-covers/inceptionCover.jpeg"
+          class="d-block w-100"
+          alt="..."
+          style="width: 1320px; height: 500px"
+        />
+        <!-- <img
+          src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).webp"
+          class="d-block w-100"
+          alt="..."
+          style="width: 1320px; height: 500px"
+        /> -->
+        <div class="carousel-caption d-none d-md-block">
+          <!-- <h5>Third slide label</h5>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p> -->
+        </div>
+      </mdb-carousel-item>
+    </mdb-carousel>
+    <button [routerLink]="['/movie']" class="btn">Explore Movies</button>
+  </div>
+</header>

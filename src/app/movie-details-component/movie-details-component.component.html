@@ -1,0 +1,49 @@
+<!-- <p>movie-details-component works!</p> -->
+<main>
+  <div *ngIf="pageIsReady" class="container details-container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="title" style="text-align: center">{{ movie.title }}</h1>
+      </div>
+      <div class="col-md-9">
+        <div class="row">
+          <div class="col-sm-6 col-md-4">
+            <img
+              class="details-poster"
+              [src]="getImageUrl(movie.title)"
+              alt="image"
+            />
+          </div>
+          <div class="col-sm-6 col-md-8">
+            <div class="details-info">
+              <ul>
+                <li><strong>Rating:</strong> {{ movie.popularity }}</li>
+                <li><strong>Cast:</strong> {{ movie.cast }}</li>
+                <li><strong>Director:</strong> {{ movie.director }}</li>
+              </ul>
+            </div>
+            <div class="details-content">
+              <p>{{ movie.short_summary }}</p>
+            </div>
+
+            <div class="details-genres">
+              <span
+                *ngFor="let genre of movie.genres"
+                class="genre"
+                style="font-size: large"
+              >
+                {{ genre }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div routerLink="/" class="btn btn-regular">
+          Back to list
+          <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

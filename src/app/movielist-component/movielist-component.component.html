@@ -1,0 +1,107 @@
+<!-- <p>movielist-component works!</p> -->
+<main>
+  <section class="search-area search">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <form>
+            <div class="search-box">
+              <input
+                type="text"
+                placeholder="Search a Movie......."
+                [ngModelOptions]="{ standalone: true }"
+                [(ngModel)]="searchQuery"
+                (input)="filterItems(searchQuery)"
+              />
+              <button class="btn-transparent" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container main-container">
+    <div class="section-header">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2 class="title">
+            <i class="fa fa-film" aria-hidden="true"></i>Movies
+          </h2>
+        </div>
+
+        <div class="col-sm-6 extra-features">
+          <button type="submit" class="btn btn-primary" (click)="showPrompt()">
+            Filter Data
+          </button>
+        </div>
+
+        <div class="col-sm-6 extra-features">
+          <div [ngClass]="{ active: true }" class="movies-genre">
+            <span
+              >Choose a genre<i class="fa fa-angle-down" aria-hidden="true"></i
+            ></span>
+            <ul class="list">
+              <!-- <li [ngClass]="{'selected': genre === showGenre}" (click)="setGenre(genre)" *ngFor="let genre of genres"><i class="fa fa-angle-right" aria-hidden="true"></i>{{genre}}</li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--section-header-->
+    <div class="row" *ngIf="showmovies">
+      <div
+        *ngFor="let movie of filteredItems"
+        [routerLink]="['/movie', movie.id]"
+        class="col-md-2 col-sm-4 col-xs-6 col-lg-2 movie-box"
+      >
+        <!-- <button
+          mat-raised-button
+          matTooltip="Hover to open dialog"
+          (mouseover)="openDialog()"
+        >
+          Hover Me
+        </button> -->
+        <div
+          class="row"
+          style="display: flex; margin: 10px; height: 100%; border-color: brown"
+        >
+          <div class="movie-item" style="height: 60%">
+            <div class="movie-poster">
+              <img
+                [src]="getImageUrl(movie.title)"
+                alt=""
+                style="height: 100%"
+              />
+            </div>
+          </div>
+          <div
+            class="movie-info"
+            style="
+              height: 40%;
+              width: 100%;
+              margin-bottom: 15px;
+              border-color: black;
+              border-width: 10px;
+            "
+          >
+            <div
+              class="movie-movie-title"
+              style="height: 20%"
+              (mouseover)="openDialog(movie.id)"
+            >
+              {{ movie.title }}
+            </div>
+            <div class="details" style="height: 40%">
+              <span class="rate">Rate: {{ movie.popularity }}</span>
+              <span class="length">{{ movie.release_year }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--item-->
+    </div>
+  </div>
+</main>

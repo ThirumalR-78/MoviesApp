@@ -1,0 +1,11 @@
+.custom-dialog-container {
+    /* z-index: 9999; */
+    /* Adjust the z-index value as needed to ensure the dialog appears on top */
+}
+
+.custom-tooltip {
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 10px;
+    border-radius: 4px;
+}
