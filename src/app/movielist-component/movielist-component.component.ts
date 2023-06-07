@@ -7,7 +7,7 @@ import {
   MatDialogConfig,
   MatDialogModule,
 } from '@angular/material/dialog';
-import { FilterPopupComponent } from '../filter-popup/filter-popup.component';
+import { FilterPopupComponent, genreType } from '../filter-popup/filter-popup.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -26,6 +26,10 @@ export class MovielistComponentComponent {
   filteredItems: any[] = [];
   searchQuery: any;
   showmovies = true;
+  generes = Object.keys(genreType);
+  showDropdown = false;
+  showGenre: any;
+  genereData = 'Choose a genre';
 
   // movieList =
   //   [
@@ -334,6 +338,7 @@ export class MovielistComponentComponent {
   movieList = movieList;
   constructor(private dialog: MatDialog) {}
   ngOnInit() {
+    this.genereData = 'Choose a genre';
     this.filteredItems = this.movieList;
   }
   filterItems(searchQuery: string) {
@@ -347,6 +352,27 @@ export class MovielistComponentComponent {
       title.toLowerCase().replaceAll(' ', '-').trimEnd().concat('.jpg');
     // console.log(modifiedTitle);
     return modifiedTitle;
+  }
+  toggleDropdown() {
+    this.showDropdown = !this.showDropdown;
+  }
+  setGenre(genre: any) {
+    this.showGenre != genre
+      ? (this.showGenre = genre)
+      : (this.showGenre = null);
+
+    this.filteredItems = this.movieList.filter((item) => {
+      console.log(genre);
+      var genereArray = item.genres[0]
+        .split(',')
+        .map((str: any) => str.toLowerCase().trim());
+      console.log(genereArray);
+      if (genereArray.includes(genre)) {
+        return item;
+      }
+    });
+    this.showDropdown = !this.showDropdown;
+    this.genereData = genre.toUpperCase().concat('...........').concat('.');
   }
 
   openDialog(id: any): void {
@@ -399,6 +425,7 @@ export class MovielistComponentComponent {
       var iscrew = false;
       var iscast = false;
       var isgenere = false;
+      var isyear = false;
 
       //cast
       for (let j = 0; j < data.cast.length; j++) {
@@ -426,6 +453,16 @@ export class MovielistComponentComponent {
           isgenere = true;
         }
         if (isgenere) {
+          filteredItemsonselected.push(this.movieList[i]);
+        }
+        console.log(filteredItemsonselected);
+      }
+      //release year
+      for (let m = 0; m < data.years.length; m++) {
+        if (this.movieList[i].release_year == data.years[m]) {
+          isyear = true;
+        }
+        if (isyear) {
           filteredItemsonselected.push(this.movieList[i]);
         }
         console.log(filteredItemsonselected);
