@@ -1,5 +1,9 @@
 <!-- <p>movielist-component works!</p> -->
-<main style="background-color: azure; margin-top: -20px">
+<div class="loading-container" *ngIf="isLoading">
+  <img src="../../assets/images/loading.gif" alt="GIF Image" />
+  <h2 class="loading-text">Loading...</h2>
+</div>
+<main style="background-color: azure; margin-top: -20px" *ngIf="!isLoading">
   <section class="search-area search">
     <div class="container">
       <div class="row">

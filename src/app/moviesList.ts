@@ -5,7 +5,7 @@ export const movieList: any[] = [
     budget: 20000000,
     revenue: 70000000,
     title: 'The Dark Knight',
-    cast: 'Christian Bale, Heath Ledger',
+    cast: 'Christian Bale,Heath Ledger',
     homepage: 'http://www.thedarkknight.com',
     director: 'Christopher Nolan',
     short_summary:

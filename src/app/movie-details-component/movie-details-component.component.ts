@@ -1,55 +1,49 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { movieList } from '../../app/moviesList';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Movie } from '../movie-model';
+import { ApiHelperService } from '../api-helper.service';
 
 @Component({
   selector: 'app-movie-details-component',
   templateUrl: './movie-details-component.component.html',
   styleUrls: ['./movie-details-component.component.css'],
 })
-export class MovieDetailsComponentComponent {
+export class MovieDetailsComponentComponent implements OnInit {
   public pageIsReady = true;
-  movie = {
-    id: 1,
-    popularity: 8.9,
-    budget: 20000000,
-    revenue: 70000000,
-    title: 'The Dark Knight',
-    cast: 'Christian Bale, Heath Ledger',
-    homepage: 'http://www.thedarkknight.com',
-    director: 'Christopher Nolan',
-    short_summary:
-      'When the menace known as The Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.',
-    genres: ['Action, Crime, Drama'],
-    production_companies: 'Warner Bros. Pictures',
-    release_year: 2008,
-  };
+  movie: Movie = new Movie();
+  paramid: any;
+  isLoading = true;
 
   // private ngUnsubscribe: Subject<void> = new Subject<void>();
 
-  constructor(private route: ActivatedRoute) {} // private store: Store<AppStore> // private route: ActivatedRoute, // private service: MainService,
+  constructor(
+    private route: ActivatedRoute,
+    private apiService: ApiHelperService
+  ) {}
 
-  ngOnInit() {
-    var paramid: any;
+  async ngOnInit() {
     this.route.params.subscribe((params) => {
-      paramid = params['id'];
+      this.paramid = params['id'];
     });
-    var list = movieList.filter((item) => {
-      if (item.id == paramid) return item;
+    await this.apiCalls();
+  }
+
+  apiCalls() {
+    this.apiService.getMoviebyId(this.paramid).subscribe((data) => {
+      this.movie = data;
+      this.isLoading = false;
     });
-    this.movie = list[0];
   }
 
   getImageUrl(title: string) {
+    if (title == null || title.length < 1) {
+      return '';
+    }
     var modifiedTitle =
       '../../assets/images/movie-covers/' +
       title.toLowerCase().replaceAll(' ', '-').trimEnd().concat('.jpg');
     // console.log(modifiedTitle);
     return modifiedTitle;
   }
-
-  // ngOnDestroy() {
-  //   this.ngUnsubscribe.next();
-  //   this.ngUnsubscribe.complete();
-  // }
 }

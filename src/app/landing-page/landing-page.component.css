@@ -34,3 +34,9 @@
     cursor: pointer;
     margin-left: 400px;
 }
+
+.team {
+    text-align: center;
+    font-size: 16px;
+    font-family: fantasy;
+}
