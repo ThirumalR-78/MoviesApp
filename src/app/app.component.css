@@ -62,3 +62,36 @@ ul {
 .btn-regular:hover .fa {
     transform: translateX(3px);
 }
+
+
+
+
+/* vertical-filter.component.css */
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+label {
+    display: inline-block;
+    font-weight: bold;
+}
+
+select {
+    display: block;
+    width: 100%;
+    height: 150px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    overflow-y: auto;
+}
+
+button {
+    margin-top: 10px;
+}

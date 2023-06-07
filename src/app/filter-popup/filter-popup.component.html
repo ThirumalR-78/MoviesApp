@@ -14,43 +14,7 @@
   <p>Release Year: {{ movie.release_year }}</p> -->
 
   <form (ngSubmit)="applyFilter()" #filterForm="ngForm">
-    <!-- <h2>Filter Options</h2> -->
-    <!-- <div>
-      <label for="popularity">Popularity</label>
-      <input
-        type="number"
-        id="popularity"
-        name="popularity"
-        [(ngModel)]="filterOptions.popularity"
-      />
-    </div>
-    <div>
-      <label for="budget">Budget</label>
-      <input
-        type="number"
-        id="budget"
-        name="budget"
-        [(ngModel)]="filterOptions.budget"
-      />
-    </div>
-    <div>
-      <label for="revenue">Revenue</label>
-      <input
-        type="number"
-        id="revenue"
-        name="revenue"
-        [(ngModel)]="filterOptions.revenue"
-      />
-    </div>
-    <div>
-      <label for="genres">Genres</label>
-      <input
-        type="text"
-        id="genres"
-        name="genres"
-        [(ngModel)]="filterOptions.genres"
-      />
-    </div> -->
+   
     <div class="col-12" style="width: 1400px">
       <div>Select Genre</div>
       <div>
@@ -94,6 +58,22 @@
             [ngModelOptions]="{ standalone: true }"
           >
             <mat-option *ngFor="let option of directors" [value]="option">{{
+              option
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div>Release Year</div>
+      <div>
+        <mat-form-field style="width: 1200px">
+          <mat-label>Year</mat-label>
+          <mat-select
+            [(ngModel)]="selectedYears"
+            multiple
+            [ngModelOptions]="{ standalone: true }"
+          >
+            <mat-option *ngFor="let option of years" [value]="option">{{
               option
             }}</mat-option>
           </mat-select>

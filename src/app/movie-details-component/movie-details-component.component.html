@@ -17,13 +17,44 @@
           <div class="col-sm-6 col-md-8">
             <div class="details-info">
               <ul>
-                <li><strong>Rating:</strong> {{ movie.popularity }}</li>
-                <li><strong>Cast:</strong> {{ movie.cast }}</li>
-                <li><strong>Director:</strong> {{ movie.director }}</li>
+                <li class="listyle">
+                  <strong class="strongstyle">Rating :</strong>
+                  <a class="textstyle">{{ movie.popularity }}</a>
+                </li>
+                <li class="listyle">
+                  <strong class="strongstyle">Cast :</strong>
+                  <a class="textstyle">{{ movie.cast }}</a>
+                </li>
+                <li class="listyle">
+                  <strong class="strongstyle">Director :</strong
+                  ><a class="textstyle">{{ movie.director }}</a>
+                </li>
+                <li class="listyle">
+                  <strong class="strongstyle">Production Companies :</strong
+                  ><a class="textstyle">{{ movie.production_companies }}</a>
+                </li>
+                <li class="listyle">
+                  <strong class="strongstyle">Release Year :</strong
+                  ><a class="textstyle">{{ movie.release_year }}</a>
+                </li>
+                <li class="listyle">
+                  <strong class="strongstyle">Budget :</strong>
+                  <a class="textstyle">$ {{ movie.budget }}</a>
+                </li>
+                <li class="listyle">
+                  <strong class="strongstyle">Revenue :</strong
+                  ><a class="textstyle">$ {{ movie.revenue }}</a>
+                </li>
+                <li class="listyle">
+                  <strong class="strongstyle">MoreDetails :</strong>
+                  <a href="{{ movie.homepage }}">{{ movie.homepage }}</a>
+                </li>
               </ul>
             </div>
             <div class="details-content">
-              <p>{{ movie.short_summary }}</p>
+              <p style="font-size: 16px; margin-left: 15px">
+                {{ movie.short_summary }}
+              </p>
             </div>
 
             <div class="details-genres">
@@ -39,7 +70,7 @@
         </div>
       </div>
       <div class="col-md-3">
-        <div routerLink="/" class="btn btn-regular">
+        <div routerLink="/movie" class="btn btn-regular">
           Back to list
           <i class="fa fa-angle-double-right" aria-hidden="true"></i>
         </div>

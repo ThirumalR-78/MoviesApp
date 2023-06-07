@@ -15,19 +15,16 @@ export class FilterPopupComponent {
   generes: any;
   cast: any[] = [];
   directors: any[] = [];
+  years: any[] = [];
   selectedGeneres: string[] = [];
   selectedCast: string[] = [];
   selectedDirectors: string[] = [];
+  selectedYears: string[] = [];
   filterOptions: any = {};
   constructor(
     @Inject(MAT_DIALOG_DATA) data: { message: string },
     public dialogRef: MatDialogRef<FilterPopupComponent>
   ) {
-    // this.form = this.fb.group({
-    //   name: ['', Validators.required],
-    //   address: ['', Validators.required],
-    //   country: [''],
-    // });
     this.movie = data;
   }
 
@@ -39,11 +36,11 @@ export class FilterPopupComponent {
       mov.director.split(',').map((c: any) => {
         this.directors.push(c);
       });
+      this.years.push(mov.release_year);
     });
     console.log(this.cast);
     console.log(this.directors);
     this.generes = Object.keys(genreType);
-    console.log(this.generes);
   }
 
   applyFilter() {
@@ -53,6 +50,7 @@ export class FilterPopupComponent {
         crew: this.selectedDirectors,
         cast: this.selectedCast,
         generes: this.selectedGeneres,
+        years: this.selectedYears,
       },
     });
   }

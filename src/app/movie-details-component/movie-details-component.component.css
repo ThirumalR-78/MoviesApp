@@ -1,0 +1,13 @@
+.strongstyle{
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: chocolate;
+    margin-right: 10px;
+}
+.textstyle{
+    font-size: 18px;
+        font-family: Arial, Helvetica, sans-serif;
+}
+.listyle{
+    margin: 15px;
+}

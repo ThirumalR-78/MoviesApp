@@ -310,7 +310,7 @@ export const movieList: any[] = [
     director: 'Anthony Russo, Joe Russo',
     short_summary:
       "After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more to undo Thanos\\' actions and restore order to the universe.",
-    genres: ['Action', 'Adventure', 'Sci-Fi'],
+    genres: ['Action, Adventure, Sci-Fi'],
     production_companies: 'Marvel Studios',
     release_year: 2019,
   },
@@ -325,7 +325,7 @@ export const movieList: any[] = [
     director: 'Jon Favreau',
     short_summary:
       'After a threat from the tiger Shere Khan forces him to flee the jungle, a man-cub named Mowgli embarks on a journey of self-discovery with the help of a panther, Bagheera, and a free-spirited bear, Baloo.',
-    genres: ['Adventure', 'Drama', 'Family'],
+    genres: ['Adventure, Drama, Family'],
     production_companies: 'Walt Disney Pictures',
     release_year: 2016,
   },
@@ -340,7 +340,7 @@ export const movieList: any[] = [
     director: 'Jon M. Chu',
     short_summary:
       "This contemporary romantic comedy follows native New Yorker Rachel Chu to Singapore to meet her boyfriend\\'s family.",
-    genres: ['Comedy', 'Drama', 'Romance'],
+    genres: ['Comedy, Drama, Romance'],
     production_companies: 'Warner Bros. Pictures',
     release_year: 2018,
   },
@@ -355,7 +355,7 @@ export const movieList: any[] = [
     director: 'Alfonso Cuarón',
     short_summary:
       'Two astronauts work together to survive after an accident leaves them stranded in space.',
-    genres: ['Drama', 'Sci-Fi', 'Thriller'],
+    genres: ['Drama, Sci-Fi, Thriller'],
     production_companies: 'Warner Bros. Pictures',
     release_year: 2013,
   },
@@ -370,7 +370,7 @@ export const movieList: any[] = [
     director: 'Jordan Peele',
     short_summary:
       "A young African-American visits his white girlfriend\\'s parents for the weekend, where his simmering uneasiness about their reception of him eventually reaches a boiling point.",
-    genres: ['Horror', 'Mystery', 'Thriller'],
+    genres: ['Horror, Mystery, Thriller'],
     production_companies: 'Blumhouse Productions',
     release_year: 2017,
   },

@@ -1,10 +1,10 @@
 <!-- <p>movielist-component works!</p> -->
-<main>
+<main style="background-color: azure; margin-top: -20px">
   <section class="search-area search">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <form>
+          <form style="margin-top: 50px">
             <div class="search-box">
               <input
                 type="text"
@@ -12,8 +12,13 @@
                 [ngModelOptions]="{ standalone: true }"
                 [(ngModel)]="searchQuery"
                 (input)="filterItems(searchQuery)"
+                style="height: 50px; border-width: 2px; border-color: brown"
               />
-              <button class="btn-transparent" type="submit">
+              <button
+                class="btn-transparent"
+                type="submit"
+                style="margin-top: 7px"
+              >
                 <i class="fa fa-search" aria-hidden="true"></i>
               </button>
             </div>
@@ -38,13 +43,23 @@
           </button>
         </div>
 
-        <div class="col-sm-6 extra-features">
-          <div [ngClass]="{ active: true }" class="movies-genre">
-            <span
-              >Choose a genre<i class="fa fa-angle-down" aria-hidden="true"></i
+        <div
+          class="col-sm-6 extra-features"
+          style="margin-top: -40px; margin-left: 400px"
+        >
+          <div [ngClass]="{ active: showDropdown }" class="movies-genre">
+            <span (click)="toggleDropdown()"
+              >{{ genereData
+              }}<i class="fa fa-angle-down" aria-hidden="true"></i
             ></span>
             <ul class="list">
-              <!-- <li [ngClass]="{'selected': genre === showGenre}" (click)="setGenre(genre)" *ngFor="let genre of genres"><i class="fa fa-angle-right" aria-hidden="true"></i>{{genre}}</li> -->
+              <li
+                [ngClass]="{ selected: genre === showGenre }"
+                (click)="setGenre(genre)"
+                *ngFor="let genre of generes"
+              >
+                <i class="fa fa-angle-right" aria-hidden="true"></i>{{ genre }}
+              </li>
             </ul>
           </div>
         </div>

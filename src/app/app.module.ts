@@ -15,6 +15,11 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { HoverPopupComponent } from './hover-popup/hover-popup.component';
+import { AdvFilterComponent } from './adv-filter/adv-filter.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { ServiceHelper } from './Service/serviceHelper';
+import { ServiceHelperService } from './Service/service-helper.service';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,7 @@ import { HoverPopupComponent } from './hover-popup/hover-popup.component';
     FilterPopupComponent,
     LandingPageComponent,
     HoverPopupComponent,
+    AdvFilterComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +41,10 @@ import { HoverPopupComponent } from './hover-popup/hover-popup.component';
     MDBBootstrapModule.forRoot(),
     CarouselModule.forRoot(),
     MatTooltipModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(ServiceHelper, {
+      delay: 1000,
+    }),
   ],
   providers: [MatDialog],
   bootstrap: [AppComponent],

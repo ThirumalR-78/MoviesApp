@@ -26,11 +26,19 @@
 .btn {
     padding: 6px 20px;
     border: 2px solid white;
-    background-color: brown;
+    /* background-color: brown; */
+    background-color:  darkslategrey;
     color: white;
     margin: 17px;
     font-size: 1.5rem;
+    font-family: 'Times New Roman', Times, serif;
     border-radius: 10px;
     cursor: pointer;
     margin-left: 400px;
+}
+
+.team{
+    text-align: center;
+    font-size: 16px;
+    font-family: fantasy;
 }
