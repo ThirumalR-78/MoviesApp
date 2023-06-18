@@ -1,0 +1,13 @@
+.range-container1 {
+    display: flex;
+    align-items: center;
+}
+
+.range-input1 {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.range-value1 {
+    font-size: 16px;
+}

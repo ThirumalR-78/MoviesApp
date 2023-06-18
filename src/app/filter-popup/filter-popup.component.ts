@@ -4,6 +4,7 @@ import { movieList } from '../../app/moviesList';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { NgForm } from '@angular/forms';
+import { ApiHelperService } from '../api-helper.service';
 
 @Component({
   selector: 'app-filter-popup',
@@ -21,9 +22,13 @@ export class FilterPopupComponent {
   selectedDirectors: string[] = [];
   selectedYears: string[] = [];
   filterOptions: any = {};
+  selectedRange: number = 0;
+  moviesList = movieList;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) data: { message: string },
-    public dialogRef: MatDialogRef<FilterPopupComponent>
+    public dialogRef: MatDialogRef<FilterPopupComponent>,
+    private apiService: ApiHelperService
   ) {
     // this.form = this.fb.group({
     //   name: ['', Validators.required],
@@ -33,20 +38,39 @@ export class FilterPopupComponent {
     this.movie = data;
   }
 
-  ngOnInit() {
-    movieList.map((mov) => {
-      mov.cast.split(',').map((c: any) => {
-        this.cast.push(c);
-      });
-      mov.director.split(',').map((c: any) => {
-        this.directors.push(c);
-      });
-      this.years.push(mov.release_year);
-    });
-    console.log(this.cast);
-    console.log(this.directors);
-    this.generes = Object.keys(genreType);
-    console.log(this.generes);
+  onSliderInput() {
+    // Handle the slider input event here
+    console.log('Selected Range:', this.selectedRange);
+  }
+
+  async ngOnInit() {
+    await this.apiCalls();
+  }
+
+  async apiCalls() {
+    await this.apiService.getMovieLists().subscribe(
+      (data) => {
+        console.log(data);
+        this.moviesList = data;
+        this.moviesList.map((mov) => {
+          mov.cast.split(',').map((c: any) => {
+            this.cast.push(c);
+          });
+          mov.director.split(',').map((c: any) => {
+            this.directors.push(c);
+          });
+          this.years.push(mov.release_year);
+        });
+        console.log(this.cast);
+        console.log(this.directors);
+        this.generes = Object.keys(genreType);
+        console.log(this.generes);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    console.log(this.moviesList);
   }
 
   applyFilter() {
@@ -57,6 +81,7 @@ export class FilterPopupComponent {
         cast: this.selectedCast,
         generes: this.selectedGeneres,
         years: this.selectedYears,
+        rating: this.selectedRange,
       },
     });
   }

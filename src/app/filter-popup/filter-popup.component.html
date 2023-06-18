@@ -14,7 +14,6 @@
   <p>Release Year: {{ movie.release_year }}</p> -->
 
   <form (ngSubmit)="applyFilter()" #filterForm="ngForm">
-   
     <div class="col-12" style="width: 1400px">
       <div>Select Genre</div>
       <div>
@@ -63,7 +62,7 @@
           </mat-select>
         </mat-form-field>
       </div>
-            <div>Release Year</div>
+      <div>Release Year</div>
       <div>
         <mat-form-field style="width: 1200px">
           <mat-label>Year</mat-label>
@@ -77,6 +76,24 @@
             }}</mat-option>
           </mat-select>
         </mat-form-field>
+      </div>
+
+      <div>
+        <div>Choose Rating</div>
+
+        <div class="range-container1">
+          <input
+            type="range"
+            class="range-input1"
+            [(ngModel)]="selectedRange"
+            min="0"
+            max="10"
+            step="0.1"
+            (input)="onSliderInput()"
+            [ngModelOptions]="{ standalone: true }"
+          />
+          <span class="range-value1">{{ selectedRange }}</span>
+        </div>
       </div>
     </div>
 

@@ -18,6 +18,7 @@ import { HoverPopupComponent } from './hover-popup/hover-popup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceHelper } from './Service-Mock';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -39,9 +40,10 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     CarouselModule.forRoot(),
     MatTooltipModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(ServiceHelper, {
-      delay: 1000,
-    }),
+    MatSliderModule,
+    // HttpClientInMemoryWebApiModule.forRoot(ServiceHelper, {
+    //   delay: 1000,
+    // }),
   ],
   providers: [MatDialog],
   bootstrap: [AppComponent],

@@ -11,7 +11,8 @@ import { ApiHelperService } from '../api-helper.service';
 })
 export class MovieDetailsComponentComponent implements OnInit {
   public pageIsReady = true;
-  movie: Movie = new Movie();
+  // movie: Movie = new Movie();
+  movie: any;
   paramid: any;
   isLoading = true;
 

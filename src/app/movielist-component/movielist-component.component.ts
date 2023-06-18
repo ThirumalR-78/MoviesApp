@@ -17,6 +17,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { movieList } from '../../app/moviesList';
 import { HoverPopupComponent } from '../hover-popup/hover-popup.component';
 import { ApiHelperService } from '../api-helper.service';
+import { HttpBackend, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-movielist-component',
@@ -37,25 +38,47 @@ export class MovielistComponentComponent implements OnInit {
   isLoading = true;
 
   movieList = movieList;
+
   constructor(
     private dialog: MatDialog,
-    private apiService: ApiHelperService
+    private apiService: ApiHelperService,
+    private http: HttpClient
   ) {}
+
   async ngOnInit() {
+    // this.movieList = [];
     await this.apiCalls();
     setTimeout(() => {
       this.isLoading = false;
     }, 1000);
-
     this.genereData = 'Choose a genre';
     this.filteredItems = this.movieList;
   }
 
-  apiCalls() {
-    this.apiService.getMovieLists().subscribe((data) => {
-      this.movieList = data;
-    });
+  async apiCalls() {
+    this.apiService.getMovieLists().subscribe(
+      (data) => {
+        console.log(data);
+        this.movieList = data;
+        this.filteredItems = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    console.log(this.movieList);
+    // this.apiService.getMovieLists().subscribe(
+    //   (response) => {
+    //     // Handle the successful response here
+    //     console.log(response);
+    //   },
+    //   (error) => {
+    //     // Handle the error here
+    //     console.error(error);
+    //   }
+    // );
   }
+
   filterItems(searchQuery: string) {
     this.filteredItems = this.movieList.filter((item) =>
       item.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -68,7 +91,6 @@ export class MovielistComponentComponent implements OnInit {
     var modifiedTitle =
       '../../assets/images/movie-covers/' +
       title.toLowerCase().replaceAll(' ', '-').trimEnd().concat('.jpg');
-    // console.log(modifiedTitle);
     return modifiedTitle;
   }
 
@@ -98,7 +120,8 @@ export class MovielistComponentComponent implements OnInit {
   openDialog(id: any): void {
     console.log(id);
     const dialogRef = this.dialog.open(HoverPopupComponent, {
-      data: movieList[id - 1],
+      // data: movieList[id - 1],
+      data: this.filteredItems.find((item) => item.id === id), //this.filteredItems[id - 1],
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -107,27 +130,11 @@ export class MovielistComponentComponent implements OnInit {
   }
 
   showPrompt(): void {
-    // this.showmovies = false;
-
-    // const dialogConfig = new MatDialogConfig();
-    // dialogConfig.disableClose = true;
-    // dialogConfig.autoFocus = true;
-    // dialogConfig.width = '60%';
-    // dialogConfig.panelClass = 'custom-dialog-container';
-    // this.dialog.open(FilterPopupComponent, dialogConfig);
-
     const dialogRef = this.dialog.open(FilterPopupComponent, {
-      //   // position: {
-      //   //   left: '150px',
-      //   //   top: '0px',
-      //   // },
       data: this.movieList[0],
-      // width: '50%', // Specify the desired width of the dialog (50% of the screen)
-      // height: 'auto',
-      width: 'auto', // Specify the desired width of the modal
-      height: 'auto', // Specify the desired height of the modal
-      position: { top: '10%', left: '10%' }, // Center the modal on the page
-      // //panelClass: 'custom-modal', // Optional CSS class for styling the modal
+      width: 'auto',
+      height: 'auto',
+      position: { top: '10%', left: '10%' },
     });
     dialogRef.afterClosed().subscribe((result: any) => {
       console.log(`Dialog result: ${result}`);
@@ -226,15 +233,21 @@ export class MovielistComponentComponent implements OnInit {
         // (data.genres.length === 0 ||
         //   data.genres.some((genre: any) => item.genres.includes(genre)))
         (data.generes.length === 0 ||
-          data.generes.some((gen: any) => item.genres[0].includes(gen))) &&
+          data.generes.some((gen: any) =>
+            item.genres[0].toLowerCase().includes(gen.toLowerCase())
+          )) &&
         (data.cast.length === 0 ||
           data.cast.some((actor: any) => item.cast.includes(actor))) &&
         (data.crew.length === 0 ||
           data.crew.some((dir: any) => item.director.includes(dir))) &&
         (data.years.length === 0 ||
-          data.years.some((yr: any) => item.release_year === yr))
+          data.years.some((yr: any) => item.release_year === yr)) &&
+        (data.rating === 0 || item.popularity >= data.rating)
       );
     });
     console.log(this.filteredItems);
   }
+}
+function resolve(arg0: boolean) {
+  throw new Error('Function not implemented.');
 }

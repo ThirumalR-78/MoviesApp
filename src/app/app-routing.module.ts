@@ -28,24 +28,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {
-  AppRoutes: Routes = [
-    // {
-    //   path: 'movie/',
-    //   redirectTo: '/',
-    //   pathMatch: 'full',
-    // },
-    {
-      path: 'movie',
-      component: MovieDetailsComponentComponent,
-    },
-    {
-      path: '',
-      component: AppComponent,
-    },
-    {
-      path: '**',
-      redirectTo: '/',
-    },
-  ];
-}
+export class AppRoutingModule {}
